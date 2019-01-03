@@ -1,3 +1,4 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">n2oZSXcjZwfim-Sgrrjc8_YspcMbByjYrp_x4</string>
     <string name="app_name">evriskon</string>
 </resources>
