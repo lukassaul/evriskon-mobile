@@ -41,6 +41,7 @@ export default class Find extends Component {
       this.middleWidth - this.props.placeholderCollapsedMargin
     );
     this.btnCancelAnimated = new Animated.Value(this.contentWidth);
+    this.btnSettingsAnimated = new Animated.Value(this.contentWidth);
 
     /**
      * functions
@@ -313,7 +314,7 @@ export default class Find extends Component {
               style={[styles.iconSearch, { left: this.iconSearchAnimated }]}
             >
               {this.props.iconSearch}
-            </Animated.View>
+           </Animated.View>
           : <Animated.Image
               source={require('../image/search.png')}
               style={[
