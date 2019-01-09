@@ -5,7 +5,7 @@
  * @format
  * @flow
  */
-
+import React, { Component } from 'react';
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
@@ -23,7 +23,16 @@ const AppNavigator = createBottomTabNavigator({
   },
 });
 
-const AppContainer = createAppContainer(AppNavigator)
+
+const AppC = createAppContainer(AppNavigator)
+
+class AppContainer extends Component {
+  render() {
+    return (
+      <AppC />
+    )
+  }
+}
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(ActionCreators, dispatch);

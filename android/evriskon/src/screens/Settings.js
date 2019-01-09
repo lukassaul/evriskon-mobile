@@ -24,6 +24,14 @@ const SCREEN_WIDTH = Dimensions.get("window").width
 
 export default class Settings extends Component {
 
+  constructor(props) {
+        super(props)
+        this.state = {
+                    bussiness: '', 
+                    county: '',
+        }; 
+    }
+
   componentWillMount(){
 
       this.headerHeight = new Animated.Value(HEADER_MIN_HIEGHT)
@@ -121,7 +129,9 @@ export default class Settings extends Component {
                   }} placeholder="Bugers, Atm's, Flowers..."
                   returnKeyType = { "next" }
                   onSubmitEditing={() => { this.textInputFindSec.focus(); }}
-                  blurOnSubmit={false}></TextInput>
+                  blurOnSubmit={false}
+                  onChangeText={(bussiness) => this.setState({'bussiness': bussiness})}
+                  value={this.state.bussiness} />
           </Animated.View>
           <Animated.View style={{flex:1,marginHorizontal:5, 
                            opacity:secondSearchbarOpacity,
@@ -132,7 +142,9 @@ export default class Settings extends Component {
                 <TextInput 
                   ref={(input) => { this.textInputFindSec = input; }}
                   style={{flex:1, padding:5 
-                    }} placeholder="Enter your locations..."></TextInput>
+                    }} placeholder="Enter your locations..."
+                    onChangeText={(county) => this.setState({'county': county})}
+                  value={this.state.county} />
           </Animated.View>
           {/*<Animated.View style={{flex:1,marginHorizontal:5, 
                                  opacity:secondSearchbarOpacity,
