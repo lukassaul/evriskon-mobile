@@ -6,20 +6,25 @@
  * @flow
  */
 import React, { Component } from 'react';
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import { createBottomTabNavigator, createAppContainer, createStackNavigator } from "react-navigation";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
-import Find from './Find'
+import Main from './Main'
+import BusinessList from './BusinessList'
 import Settings from './Settings'
 
+const stack = createStackNavigator({
+    Main:{screen: Main},
+    BusinessList:{screen: BusinessList}
+});
 
 const AppNavigator = createBottomTabNavigator({
+  Find: {
+    screen: stack,
+  },
   Settings: {
     screen: Settings,
-  },
-  Find: {
-    screen: Find,
   },
 });
 
@@ -34,8 +39,6 @@ class AppContainer extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ActionCreators, dispatch);
-}
 
-export default connect(mapDispatchToProps)(AppContainer);
+
+export default connect()(AppContainer);

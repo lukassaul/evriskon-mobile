@@ -1,10 +1,16 @@
 import * as types from './types'
 import { Alert } from 'react-native'
+let CONFIG = require('../lib/config.json')
+import Reactotron from 'reactotron-react-native'
+
+export const findBusinessLocAction = {
+	getBusinessLoc
+}
 
 export function getBusinessLoc(data){
 
 	return (dispatch, getState) => {
-		fetch(CONFIG.server_url + '/' + info + '/api/category/', {
+		return fetch(CONFIG.server_url + '/search/business/', {
 			method: 'Get',
 			headers: {
 					'Accept': 'application/json', 
@@ -13,9 +19,9 @@ export function getBusinessLoc(data){
 		})
 		.then((response) => response.json())
 		.then((responseData) => {
-			dispatch(setBusiness({business: responseData}));			
+			dispatch(setBusiness({business: responseData}));		
 		}).catch( (error) => {
-			Alert.alert("There is an error")
+			Reactotron.log(error.message)
 		});
 	}
 
