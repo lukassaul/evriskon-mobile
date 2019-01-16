@@ -10,7 +10,7 @@ export const findBusinessLocAction = {
 export function getBusinessLoc(data){
 
 	return (dispatch, getState) => {
-		return fetch(CONFIG.server_url + '/search/business/', {
+		return fetch(CONFIG.server_url + '/search/business/?search=casino&county=oregon', {
 			method: 'Get',
 			headers: {
 					'Accept': 'application/json', 

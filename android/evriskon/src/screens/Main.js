@@ -67,7 +67,7 @@ class Main extends Component {
             'county': this.state.county
         }
     dispatch(findBusinessLocAction.getBusinessLoc(data)).then( () => {
-      this.props.navigation.navigate('BusinessList')
+        this.props.navigation.navigate('BusinessList')
     })
   }
 

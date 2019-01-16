@@ -4,7 +4,6 @@ import Reactotron from 'reactotron-react-native'
 
 export const businessLoc = createReducer({}, {
 	[types.GET_BUSINESS_AND_LOCATION](state, action) {
-		Reactotron.log(action.business)
 	    return action.business;
 	},
 });

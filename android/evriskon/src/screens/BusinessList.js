@@ -12,11 +12,12 @@ import {Platform,
   Keyboard,
 } from 'react-native';
 import { connect } from 'react-redux';
-
+import Mapbox from '@mapbox/react-native-mapbox-gl';
 import { Icon, List, ListItem } from 'native-base'
-
 import { Col, Grid } from "react-native-easy-grid";
 import Reactotron from 'reactotron-react-native'
+
+Mapbox.setAccessToken('pk.eyJ1Ijoic3R1ZmYwNTc3IiwiYSI6ImNqcXl1dG1ubDA3MWg0M3BvbDZxN2ptZ2IifQ.WRfS6IeFZDAaBoC4lts0Nw');
 
 HEADER_MAX_HIEGHT = 120
 HEADER_MIN_HIEGHT = 40
@@ -28,24 +29,42 @@ class BusinessList extends Component {
   constructor(props) {
         super(props)
         this.state = {
-                    bussiness: this.props.businessLoc    
+                    bussiness: null    
         }; 
     }
 
-  componentDidMount(){
-    Reactotron.log('from businessLoc:' +' '+ this.state.bussiness)
+  componentWillMount(){
+    this.setState({ bussiness: this.props.businessLoc })
   }
+
+  componentDidMount(){
+    Reactotron.log(this.state.bussiness.results.lat)
+  }
+
 
   render() {  
     return (
       <View style={{flex:1}}>
-          {this.state.business && this.state.bussiness.map( (buss) => {
-            return <Text key={buss.id}>{buss.city}</Text>    
-          })}
+          
+           
+              <Mapbox.MapView
+                          styleURL={Mapbox.StyleURL.Street}
+                          zoomLevel={15}
+                          centerCoordinate={[-122.5388687, 45.5031395]}
+                          style={styles.container}>
+                      </Mapbox.MapView>
+               
+      
       </View> 
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 function mapStateToProps(state){
     return {
